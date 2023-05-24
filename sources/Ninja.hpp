@@ -2,21 +2,25 @@
 
 #include "Character.hpp"
 
-
 using namespace std;
 
-namespace ariel
-{
-    class Ninja : public Character
-    {
-    
+namespace ariel {
+
+    class Ninja : public Character {
     public:
+        // Member variables
         int speed;
-        int hits;
-        Ninja(string name_, Point P);
-        Ninja();
+        int life;
+
+        // Constructors
+        Ninja(const std::string& name, const Point& location, int hitPoints, int speed);
+        Ninja(Ninja& other);
+
+        // Functions
         void move(Character* enemy);
         void slash(Character* enemy);
+        void checkEnemyAlive(Character* enemy);
         string print() override;
     };
-}
+    
+}  // namespace ariel

@@ -25,7 +25,7 @@ TEST_CASE("YoungNinja")
     Point p(0, 0);
     YoungNinja* young = new YoungNinja("shira", Point(5,5));
     CHECK_NOTHROW(YoungNinja("shira", p));
-    CHECK(young->hits == 100);
+    CHECK(young->life == 100);
     CHECK(young->speed == 14);
     CHECK(young->getLocation().get_x() == p.get_x());
     CHECK_EQ(young->getName(),"shira");
@@ -36,7 +36,7 @@ TEST_CASE("oldNinja")
     Point b(9.9,9.9);
     OldNinja *old = new OldNinja("shira", b);
     CHECK_NOTHROW(OldNinja *old2 = new OldNinja("shira", b));
-    CHECK(old->hits == 150);
+    CHECK(old->life == 150);
     CHECK(old->speed == 8);
     CHECK(old->getLocation().get_x() == b.get_x());
     CHECK(old->getLocation().get_y() == b.get_y());
@@ -47,7 +47,7 @@ TEST_CASE("TrainedNinja")
     Point b(4.9,0);
     TrainedNinja *Trained = new TrainedNinja("shira", b);
     CHECK_NOTHROW(TrainedNinja("shira", b));
-    CHECK(Trained->hits == 120);
+    CHECK(Trained->life == 120);
     CHECK(Trained->speed == 12);
 }
 
@@ -71,10 +71,10 @@ TEST_CASE("cowboy")
         coboy3->reload();
         CHECK(coboy3->hasboolets()==true);
 //////////////////////////////////////////
-        int beforeSlash = old->hits;
+        int beforeSlash = old->life;
         old->move(coboy3);
         old->slash(coboy3);
-        int afterSlash = old ->hits;
+        int afterSlash = old ->life;
         CHECK(beforeSlash==afterSlash);
 }
 
@@ -84,7 +84,7 @@ TEST_CASE("Ninja")
     Ninja Ninja("shira", p);
     CHECK(Ninja.getName() == "shira");
     CHECK_EQ(Ninja.speed,0);
-    CHECK_EQ(Ninja.hits,0);
+    CHECK_EQ(Ninja.life,0);
 }
 
 TEST_CASE("Team")

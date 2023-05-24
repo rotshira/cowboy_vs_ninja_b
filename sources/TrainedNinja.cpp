@@ -6,11 +6,16 @@
 using namespace std;
 namespace ariel
 {
-//constructor
-TrainedNinja::TrainedNinja(string name_,Point p):Ninja(name_,p)
+
+
+ TrainedNinja::TrainedNinja(const std::string &name, const Point &location)
+    : Ninja(name, location, 120, 12)
 {
-this->speed = 12;
-this-> hits=120;
+}
+
+TrainedNinja::TrainedNinja(TrainedNinja &other)
+    : Ninja(other)
+{
 }
 
 }

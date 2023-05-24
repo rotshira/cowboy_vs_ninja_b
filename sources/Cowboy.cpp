@@ -2,56 +2,68 @@
 #include <iostream>
 #include <stdexcept>
 #include "Character.hpp"
-
 #include "Cowboy.hpp"
 
 using namespace std;
-namespace ariel
-{
-//constructor
-  Cowboy::Cowboy(std::string name_, Point l) : Character(name_, l)
-{
-    number_b = 6;
-} 
 
+namespace ariel {
 
-void Cowboy::shoot(Character*  enemy)
-{
-    if (enemy == this) {
-            throw std::runtime_error("Can't shoot self.");
+    // Constructors
+
+    Cowboy::Cowboy(const string& name, const Point& location)
+        : Character(location, 110, name), number_b(6) {
+    }
+
+    Cowboy::Cowboy(Cowboy& other) : Character(other), number_b(other.number_b) {
+    }
+
+    // Functions
+
+    void Cowboy::shoot(Character* enemy) {
+        if (!isAlive()) {
+            throw std::runtime_error("Dead-cannot shoot");
         }
+
+        if (enemy == nullptr) {
+            throw std::invalid_argument("Enemy character pointer -nullptr");
+        }
+
+        if (enemy == this) {
+            throw std::runtime_error("Cannot shoot ineself");
+        }
+
         if (!enemy->isAlive()) {
-            throw std::runtime_error("Enemy is already dead.");
+            throw std::runtime_error(" already dead");
         }
-        if (isAlive() && number_b > 0) {
-            enemy->hit(10);
-            number_b--;
+
+        if (!hasboolets()) {
+            return;
         }
-}
 
-bool  Cowboy::hasboolets()
-{
-    if (!isAlive()) 
-    {
-        throw("The cowboy is dead");
+        enemy->hit(10);
+        number_b -= 1;
     }
-    return number_b > 0;
-}
 
-void Cowboy::reload()
-{
- if (!isAlive())
-    {
-        throw("The cowboy is dead");
+    bool Cowboy::hasboolets() {
+        return number_b > 0;
     }
-    number_b += 6;
-}
 
-string Cowboy::print()
-{
-    string locationString = getLocationString(); // Call getLocationString() and store the result in a string variable
-    return "(C) Name: " + getName() + ", Position: " + locationString + ", Hit: " + to_string(hits);
-}
+    void Cowboy::reload() {
+        if (!isAlive()) {
+            throw runtime_error("The cowboy is dead");
+        }
+        else {
+            number_b += 6;
+            if (number_b > 6) 
+            {
+                number_b = 6;
+            }
+        }
+    }
 
-}
+    string Cowboy::print() {
+        string locationString = getLocationString();
+        return "(C) Name: " + getName() + ", Location: " + locationString + ", Hit: " + to_string(getLife());
+    }
 
+}  // namespace ariel

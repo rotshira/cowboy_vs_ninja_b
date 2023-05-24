@@ -18,15 +18,6 @@ using namespace ariel;
 
 
 int main() {
-    Cowboy cowboy{"Bob", Point{2, 3}};
-   double e = cowboy.getLocation().distance(Point{2, 3});
-   double e1 = cowboy.getLocation().get_x();
-   double e2 = cowboy.getLocation().get_y();
-
-    cout << e1  <<endl;
-    cout << e2  <<endl;
-    cout << e <<endl;
-   ////////////////////////////////
     Point a(32.3,44),b(1.3,3.5);
     assert(a.distance(b) == b.distance(a));
     Cowboy *tom = new Cowboy("Tom", a);
@@ -40,7 +31,7 @@ int main() {
     Team team_A(tom); 
     team_A.add(new YoungNinja("Yogi", Point(64,57)));
 
-    // Team b(tom); should throw tom is already in team a
+   //  Team b(tom); should throw tom is already in team a
 
      Team team_B(sushi);
      team_B.add(new TrainedNinja("Hikari", Point(12,81)));
@@ -57,8 +48,5 @@ int main() {
      else cout << "winner is team_B" << endl;
 
      return 0; // no memory issues. Team should free the memory of its members. both a and b teams are on the stack. 
-
-
-
 
 }

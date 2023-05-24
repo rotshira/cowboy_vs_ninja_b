@@ -17,7 +17,8 @@ class YoungNinja:public Ninja
 private:
 
 public:
-YoungNinja(string name_, Point p);
+YoungNinja(const std::string &name, const Point &location);
+YoungNinja(YoungNinja &other);
 
 
 

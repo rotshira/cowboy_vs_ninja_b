@@ -1,23 +1,19 @@
-#include <stdio.h>
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <stdexcept>
-#include <string>
-#include <vector>
-
-#include "Team.hpp"
-
-#include "Ninja.hpp"
 #include "YoungNinja.hpp"
 
 using namespace std;
+
 namespace ariel
 {
-//constructor
-YoungNinja::YoungNinja(string name_, Point l) : Ninja(name_,l) {
-    this->speed = 14;
-    this->hits = 100;
+    // Default constructor
+    YoungNinja::YoungNinja(const std::string &name, const Point &location)
+    : Ninja(name, location, 100, 14)
+{
+}
+
+YoungNinja::YoungNinja(YoungNinja &other)
+    : Ninja(other)
+{
 }
 
 }

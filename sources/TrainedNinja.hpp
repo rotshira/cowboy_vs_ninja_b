@@ -6,8 +6,6 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-// #include "Point.hpp"
-// #include "Character.hpp"
 #include "Ninja.hpp"
 
 
@@ -18,7 +16,11 @@ namespace ariel
 class TrainedNinja: public Ninja 
     {
     public:
-        TrainedNinja(string name_, Point p) ;
+    // TrainedNinja() ;
+      TrainedNinja(const std::string &name, const Point &location);
+      TrainedNinja(TrainedNinja &other);
+
+       
 
 };
 }

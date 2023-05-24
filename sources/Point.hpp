@@ -1,4 +1,5 @@
 #pragma once
+
 #include <stdio.h>
 #include <fstream>
 #include <sstream>
@@ -6,26 +7,29 @@
 #include <iostream>
 #include <cmath>
 
-
 using namespace std;
-namespace ariel
-{
-class Point
-{
-private:
 
- double x;
- double y;
+namespace ariel {
 
-public:
-double get_x();
-double get_y();
-void set_x(double x_);
-void set_y(double y_);
-Point(double x_,double y_);
-Point();
-double distance(Point P);
-void print();
-static Point moveTowards(Point p1, Point p2, double dist);
-};
-}
+    class Point {
+    private:
+        double x;
+        double y;
+
+    public:
+        // Constructors
+        Point(double newX, double newY);
+        Point();
+
+        // Member functions
+        double get_x();
+        double get_y();
+        void set_x(double newX);
+        void set_y(double newY);
+        double distance(const Point& other) const;
+        bool operator==(const Point& other) const;
+        void print();
+        static Point moveTowards(Point point1, Point point2, double dist);
+    };
+
+}  // namespace ariel

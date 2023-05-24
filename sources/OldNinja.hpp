@@ -8,7 +8,8 @@ class OldNinja:public Ninja
 {
 
 public:
-OldNinja(string name_,Point l_);
+OldNinja(const std::string &name, const Point &location);
+OldNinja(OldNinja &other);
 
 };
 }
